@@ -1,0 +1,56 @@
+
+name: Deploy to CapRover
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # BACKEND
+      - name: Build and push Backend
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: Sapienza.Sapienza.Dominus.HttpApi.Host/Dockerfile
+          push: true
+          tags: ghcr.io/${{ github.repository }}/backend:latest
+
+      - name: Deploy Backend to CapRover
+        uses: caprover/deploy-from-image-action@v1
+        with:
+          server: '${{ secrets.CAPROVER_SERVER }}'
+          app: '${{ secrets.CAPROVER_APP_BACKEND }}'
+          token: '${{ secrets.CAPROVER_PASSWORD }}'
+          image: ghcr.io/${{ github.repository }}/backend:latest
+
+      # FRONTEND
+      - name: Build and push Frontend
+        uses: docker/build-push-action@v5
+        with:
+          context: ./abp-react-v2
+          file: ./abp-react-v2/Dockerfile
+          push: true
+          tags: ghcr.io/${{ github.repository }}/frontend:latest
+
+      - name: Deploy Frontend to CapRover
+        uses: caprover/deploy-from-image-action@v1
+        with:
+          server: '${{ secrets.CAPROVER_SERVER }}'
+          app: '${{ secrets.CAPROVER_APP_FRONTEND }}'
+          token: '${{ secrets.CAPROVER_PASSWORD }}'
+          image: ghcr.io/${{ github.repository }}/frontend:latest
