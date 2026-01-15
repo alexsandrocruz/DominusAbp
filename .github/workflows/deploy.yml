@@ -31,7 +31,7 @@ jobs:
           tags: ghcr.io/${{ github.repository }}/backend:latest
 
       - name: Deploy Backend to CapRover
-        uses: caprover/deploy-from-image-action@v1
+        uses: caprover/deploy-from-image@v1
         with:
           server: '${{ secrets.CAPROVER_SERVER }}'
           app: '${{ secrets.CAPROVER_APP_BACKEND }}'
@@ -48,7 +48,7 @@ jobs:
           tags: ghcr.io/${{ github.repository }}/frontend:latest
 
       - name: Deploy Frontend to CapRover
-        uses: caprover/deploy-from-image-action@v1
+        uses: caprover/deploy-from-image@v1
         with:
           server: '${{ secrets.CAPROVER_SERVER }}'
           app: '${{ secrets.CAPROVER_APP_FRONTEND }}'
