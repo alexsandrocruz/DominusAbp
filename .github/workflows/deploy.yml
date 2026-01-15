@@ -31,12 +31,9 @@ jobs:
           tags: ghcr.io/${{ github.repository }}/backend:latest
 
       - name: Deploy Backend to CapRover
-        uses: caprover/deploy-from-image@v1
-        with:
-          server: '${{ secrets.CAPROVER_SERVER }}'
-          app: '${{ secrets.CAPROVER_APP_BACKEND }}'
-          token: '${{ secrets.CAPROVER_PASSWORD }}'
-          image: ghcr.io/${{ github.repository }}/backend:latest
+        run: |
+          npm install -g caprover
+          caprover deploy -h '${{ secrets.CAPROVER_SERVER }}' -p '${{ secrets.CAPROVER_PASSWORD }}' -a '${{ secrets.CAPROVER_APP_BACKEND }}' -i 'ghcr.io/${{ github.repository }}/backend:latest'
 
       # FRONTEND
       - name: Build and push Frontend
@@ -48,9 +45,5 @@ jobs:
           tags: ghcr.io/${{ github.repository }}/frontend:latest
 
       - name: Deploy Frontend to CapRover
-        uses: caprover/deploy-from-image@v1
-        with:
-          server: '${{ secrets.CAPROVER_SERVER }}'
-          app: '${{ secrets.CAPROVER_APP_FRONTEND }}'
-          token: '${{ secrets.CAPROVER_PASSWORD }}'
-          image: ghcr.io/${{ github.repository }}/frontend:latest
+        run: |
+          caprover deploy -h '${{ secrets.CAPROVER_SERVER }}' -p '${{ secrets.CAPROVER_PASSWORD }}' -a '${{ secrets.CAPROVER_APP_FRONTEND }}' -i 'ghcr.io/${{ github.repository }}/frontend:latest'
