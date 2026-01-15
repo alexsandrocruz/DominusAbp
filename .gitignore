@@ -170,7 +170,8 @@ publish/
 PublishScripts/
 
 # NuGet Packages
-*.nupkg
+# *.nupkg
+!nupkgs/*.nupkg
 # The packages folder can be checked in if Custom Tool is used
 # but generally, it is not recommended to check in packages
 # packages/
