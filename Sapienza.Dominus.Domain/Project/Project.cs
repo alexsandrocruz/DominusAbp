@@ -23,7 +23,7 @@ public class Project : FullAuditedAggregateRoot<Guid>
     public virtual Dominus.Client.Client? Client { get; set; }
 
     // ========== Collection Navigation Properties (1:N - This entity is the "One" side) ==========
-    public virtual ICollection<Dominus.Task.Task> Tasks { get; set; } = new List<Dominus.Task.Task>();
+    public virtual ICollection<Dominus.Tasks.Task> Tasks { get; set; } = new List<Dominus.Tasks.Task>();
     public virtual ICollection<Dominus.TimeEntry.TimeEntry> TimeEntries { get; set; } = new List<Dominus.TimeEntry.TimeEntry>();
     public virtual ICollection<Dominus.ProjectResponsible.ProjectResponsible> ProjectResponsibles { get; set; } = new List<Dominus.ProjectResponsible.ProjectResponsible>();
     public virtual ICollection<Dominus.ProjectFollower.ProjectFollower> ProjectFollowers { get; set; } = new List<Dominus.ProjectFollower.ProjectFollower>();

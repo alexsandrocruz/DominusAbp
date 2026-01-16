@@ -20,11 +20,11 @@ public class TaskCommentAppService :
     ITaskCommentAppService
 {
     private readonly IRepository<Dominus.TaskComment.TaskComment, Guid> _repository;
-    private readonly IRepository<Dominus.Task.Task, Guid> _taskRepository;
+    private readonly IRepository<Dominus.Tasks.Task, Guid> _taskRepository;
 
     public TaskCommentAppService(
         IRepository<Dominus.TaskComment.TaskComment, Guid> repository,
-        IRepository<Dominus.Task.Task, Guid> taskRepository
+        IRepository<Dominus.Tasks.Task, Guid> taskRepository
     )
     {
         _repository = repository;

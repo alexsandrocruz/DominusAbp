@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Sapienza.Sapienza.Dominus Run Script for macOS
+# Sapienza.Dominus Run Script for macOS
 # Usage: ./run.sh [--setup] [--build-abp]
 
 SETUP=false

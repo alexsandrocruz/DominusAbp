@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Sapienza.Sapienza.Dominus Local Run Script (without Docker for app, only infra)
+# Sapienza.Dominus Local Run Script (without Docker for app, only infra)
 # Usage: ./run-local.sh [--setup]
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -56,13 +56,13 @@ for arg in "$@"; do
 done
 
 echo "📡 Starting API (https://localhost:44322)..."
-cd "$SCRIPT_DIR/Sapienza.Sapienza.Dominus.HttpApi.Host"
+cd "$SCRIPT_DIR/Sapienza.Dominus.HttpApi.Host"
 dotnet run --urls="https://localhost:44322" &
 API_PID=$!
 
 if [ "$API_ONLY" = false ]; then
     echo "🌐 Starting Web (https://localhost:44360)..."
-    cd "$SCRIPT_DIR/Sapienza.Sapienza.Dominus.Web"
+    cd "$SCRIPT_DIR/Sapienza.Dominus.Web"
     dotnet run --urls="https://localhost:44360" &
     WEB_PID=$!
 fi

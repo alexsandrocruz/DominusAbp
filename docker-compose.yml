@@ -16,7 +16,7 @@ services:
   httpapi-host:
     build:
       context: .
-      dockerfile: Sapienza.Sapienza.Dominus.HttpApi.Host/Dockerfile
+      dockerfile: Sapienza.Dominus.HttpApi.Host/Dockerfile
     container_name: sapienza-zen-api
     depends_on:
       - mongodb
@@ -36,7 +36,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: Sapienza.Sapienza.Dominus.Web/Dockerfile
+      dockerfile: Sapienza.Dominus.Web/Dockerfile
     container_name: sapienza-zen-web
     depends_on:
       - httpapi-host

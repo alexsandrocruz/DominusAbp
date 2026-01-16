@@ -3,5 +3,13 @@
     <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
     <AbpVersion>9.0.4</AbpVersion>
     <BlazoriseVersion>1.6.2</BlazoriseVersion>
+    <LangVersion>latest</LangVersion>
+    <Version>1.0.0</Version>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <AbpProjectType>app</AbpProjectType>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Using Include="System.Threading.Tasks.Task" Alias="Task" />
+  </ItemGroup>
 </Project>

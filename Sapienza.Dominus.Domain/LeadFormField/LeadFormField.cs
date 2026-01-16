@@ -1,4 +1,5 @@
 // Generated with Fixed Generator
+using Volo.Abp.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using Volo.Abp.Domain.Entities.Auditing;

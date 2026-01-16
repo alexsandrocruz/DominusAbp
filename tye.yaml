@@ -13,13 +13,13 @@ services:
       containerPort: 6379
 
 - name: httpapi-host
-  project: Sapienza.Sapienza.Dominus.HttpApi.Host/Sapienza.Sapienza.Dominus.HttpApi.Host.csproj
+  project: Sapienza.Dominus.HttpApi.Host/Sapienza.Dominus.HttpApi.Host.csproj
   bindings:
   - port: 44322
     protocol: https
 
 - name: web
-  project: Sapienza.Sapienza.Dominus.Web/Sapienza.Sapienza.Dominus.Web.csproj
+  project: Sapienza.Dominus.Web/Sapienza.Dominus.Web.csproj
   replicas: 1
   bindings:
   - port: 44360

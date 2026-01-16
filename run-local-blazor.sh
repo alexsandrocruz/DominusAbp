@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Sapienza.Sapienza.Dominus Local Run Script with Blazor support
+# Sapienza.Dominus Local Run Script with Blazor support
 # Usage: ./run-local-blazor.sh [--setup] [--api-only] [--blazor]
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -30,8 +30,8 @@ if [ "$SETUP" = true ]; then
     
     # Install ABP libs
     echo "📚 Installing ABP libs..."
-    cd "$SCRIPT_DIR/Sapienza.Sapienza.Dominus.Web" && abp install-libs
-    cd "$SCRIPT_DIR/Sapienza.Sapienza.Dominus.Blazor.Server" && abp install-libs
+    cd "$SCRIPT_DIR/Sapienza.Dominus.Web" && abp install-libs
+    cd "$SCRIPT_DIR/Sapienza.Dominus.Blazor.Server" && abp install-libs
     
     echo "✅ Setup complete!"
 fi
@@ -53,19 +53,19 @@ echo "   Redis:   localhost:6379"
 echo ""
 
 echo "📡 Starting API (https://localhost:44322)..."
-cd "$SCRIPT_DIR/Sapienza.Sapienza.Dominus.HttpApi.Host"
+cd "$SCRIPT_DIR/Sapienza.Dominus.HttpApi.Host"
 dotnet run --urls="https://localhost:44322" &
 API_PID=$!
 
 if [ "$API_ONLY" = false ]; then
     if [ "$BLAZOR" = true ]; then
         echo "🌐 Starting Blazor Server (https://localhost:44307)..."
-        cd "$SCRIPT_DIR/Sapienza.Sapienza.Dominus.Blazor.Server"
+        cd "$SCRIPT_DIR/Sapienza.Dominus.Blazor.Server"
         dotnet run --urls="https://localhost:44307" &
         WEB_PID=$!
     else
         echo "🌐 Starting Web (https://localhost:44360)..."
-        cd "$SCRIPT_DIR/Sapienza.Sapienza.Dominus.Web"
+        cd "$SCRIPT_DIR/Sapienza.Dominus.Web"
         dotnet run --urls="https://localhost:44360" &
         WEB_PID=$!
     fi
