@@ -12,7 +12,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Search, MoreHorizontal, Pencil, Trash2, Loader2 } from "lucide-react";
+import { Search, MoreHorizontal, Pencil, Trash2, Loader2, LayoutGrid, List } from "lucide-react";
+import { ClientCard } from "./ClientCard";
 import { toast } from "sonner";
 import {
   DropdownMenu,
@@ -70,118 +71,118 @@ export function ClientList({ onEdit }: ClientListProps) {
         <Table>
           <TableHeader>
             <TableRow>
-              
+
               <TableHead>Name</TableHead>
-              
+
               <TableHead>Email</TableHead>
-              
+
               <TableHead>Phone</TableHead>
-              
+
               <TableHead>ClientType</TableHead>
-              
+
               <TableHead>CompanyName</TableHead>
-              
+
               <TableHead>CNPJ</TableHead>
-              
+
               <TableHead>CPF</TableHead>
-              
+
               <TableHead>BirthDate</TableHead>
-              
+
               <TableHead>Address</TableHead>
-              
+
               <TableHead>City</TableHead>
-              
+
               <TableHead>State</TableHead>
-              
+
               <TableHead>ZipCode</TableHead>
-              
+
               <TableHead>Status</TableHead>
-              
+
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {data?.items?.map((item: any) => (
               <TableRow key={item.id}>
-                
+
                 <TableCell>
-                  
+
                   {item.name}
-                  
+
                 </TableCell>
-                
+
                 <TableCell>
-                  
+
                   {item.email}
-                  
+
                 </TableCell>
-                
+
                 <TableCell>
-                  
+
                   {item.phone}
-                  
+
                 </TableCell>
-                
+
                 <TableCell>
-                  
+
                   {item.clientType}
-                  
+
                 </TableCell>
-                
+
                 <TableCell>
-                  
+
                   {item.companyName}
-                  
+
                 </TableCell>
-                
+
                 <TableCell>
-                  
+
                   {item.cNPJ}
-                  
+
                 </TableCell>
-                
+
                 <TableCell>
-                  
+
                   {item.cPF}
-                  
+
                 </TableCell>
-                
+
                 <TableCell>
-                  
+
                   {item.birthDate ? new Date(item.birthDate).toLocaleDateString() : "-"}
-                  
+
                 </TableCell>
-                
+
                 <TableCell>
-                  
+
                   {item.address}
-                  
+
                 </TableCell>
-                
+
                 <TableCell>
-                  
+
                   {item.city}
-                  
+
                 </TableCell>
-                
+
                 <TableCell>
-                  
+
                   {item.state}
-                  
+
                 </TableCell>
-                
+
                 <TableCell>
-                  
+
                   {item.zipCode}
-                  
+
                 </TableCell>
-                
+
                 <TableCell>
-                  
+
                   {item.status}
-                  
+
                 </TableCell>
-                
+
                 <TableCell className="text-right">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
@@ -196,7 +197,7 @@ export function ClientList({ onEdit }: ClientListProps) {
                         <Pencil className="mr-2 h-4 w-4" />
                         Edit
                       </DropdownMenuItem>
-                      <DropdownMenuItem 
+                      <DropdownMenuItem
                         className="text-destructive"
                         onClick={() => handleDelete(item.id)}
                       >
