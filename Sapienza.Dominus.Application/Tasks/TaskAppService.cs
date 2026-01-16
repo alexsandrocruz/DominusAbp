@@ -34,7 +34,7 @@ public class TaskAppService :
     /// <summary>
     /// Gets a single Task by Id
     /// </summary>
-    public virtual async System.Threading.Tasks.System.Threading.Tasks.Task<TaskDto> GetAsync(Guid id)
+    public virtual async System.Threading.Tasks.Task<TaskDto> GetAsync(Guid id)
     {
         var entity = await _repository.GetAsync(id);
         var dto = ObjectMapper.Map<Dominus.Tasks.Task, TaskDto>(entity);
@@ -50,7 +50,7 @@ public class TaskAppService :
     /// <summary>
     /// Gets a paged and filtered list of Tasks
     /// </summary>
-    public virtual async System.Threading.Tasks.System.Threading.Tasks.Task<PagedResultDto<TaskDto>> GetListAsync(TaskGetListInput input)
+    public virtual async System.Threading.Tasks.Task<PagedResultDto<TaskDto>> GetListAsync(TaskGetListInput input)
     {
         var queryable = await _repository.GetQueryableAsync();
 
@@ -98,7 +98,7 @@ public class TaskAppService :
     /// Creates a new Task
     /// </summary>
     [Authorize(TaskPermissions.Create)]
-    public virtual async System.Threading.Tasks.System.Threading.Tasks.Task<TaskDto> CreateAsync(CreateUpdateTaskDto input)
+    public virtual async System.Threading.Tasks.Task<TaskDto> CreateAsync(CreateUpdateTaskDto input)
     {
         var entity = ObjectMapper.Map<CreateUpdateTaskDto, Dominus.Tasks.Task>(input);
 
@@ -111,7 +111,7 @@ public class TaskAppService :
     /// Updates an existing Task
     /// </summary>
     [Authorize(TaskPermissions.Update)]
-    public virtual async System.Threading.Tasks.System.Threading.Tasks.Task<TaskDto> UpdateAsync(Guid id, CreateUpdateTaskDto input)
+    public virtual async System.Threading.Tasks.Task<TaskDto> UpdateAsync(Guid id, CreateUpdateTaskDto input)
     {
         var entity = await _repository.GetAsync(id);
         if (entity == null)
@@ -135,7 +135,7 @@ public class TaskAppService :
         await _repository.DeleteAsync(id);
     }
 
-    public virtual async System.Threading.Tasks.System.Threading.Tasks.Task<ListResultDto<LookupDto<Guid>>> GetTaskLookupAsync()
+    public virtual async System.Threading.Tasks.Task<ListResultDto<LookupDto<Guid>>> GetTaskLookupAsync()
     {
         var entities = await _repository.GetListAsync();return new ListResultDto<LookupDto<Guid>>(
             entities.Select(x => new LookupDto<Guid>

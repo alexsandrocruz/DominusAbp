@@ -6,6 +6,8 @@ using Volo.Abp.Domain.Entities.Auditing;
 
 namespace Sapienza.Dominus.SchedulerException;
 
+#nullable enable
+
 /// <summary>
 /// SchedulerException entity
 /// </summary>

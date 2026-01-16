@@ -5,6 +5,8 @@ using Volo.Abp.Domain.Entities.Auditing;
 
 namespace Sapienza.Dominus.Project;
 
+#nullable enable
+
 /// <summary>
 /// Project entity
 /// </summary>
